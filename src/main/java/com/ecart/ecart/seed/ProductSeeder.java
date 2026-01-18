@@ -1,6 +1,7 @@
 package com.ecart.ecart.seed;
 
 import com.ecart.ecart.entity.Product;
+import com.ecart.ecart.entity.ProductImage;
 import com.ecart.ecart.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ProductSeeder implements CommandLineRunner {
@@ -17,16 +19,16 @@ public class ProductSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if(productRepository.count() == 0){
             List<Product> products = Arrays.asList(
-                    new Product(null, "Iphone 15", 799.0, "Latest Apple iPhone 15 with advanced features", "Smartphones", 4.8, "Amazon", 500),
-                    new Product(null, "Samsung Galaxy S24", 749.0, "Samsung flagship with high refresh display", "Smartphones", 4.6, "BestBuy", 400),
-                    new Product(null, "Google Pixel 8", 699.0, "Google phone with clean Android and great camera", "Smartphones", 4.5, "Google Store", 350),
-                    new Product(null, "OnePlus 12", 649.0, "Performance-focused phone with fast charging", "Smartphones", 4.4, "OnePlus", 300),
-                    new Product(null, "Sony WH-1000XM5", 349.0, "Top-tier noise cancelling headphones", "Audio", 4.7, "Sony", 200),
-                    new Product(null, "Apple AirPods Pro 2", 249.0, "Wireless earbuds with active noise cancellation", "Audio", 4.6, "Apple Store", 450),
-                    new Product(null, "Dell XPS 13", 999.0, "Compact premium laptop for professionals", "Laptops", 4.5, "Dell", 120),
-                    new Product(null, "Samsung 55\" QLED TV", 899.0, "4K QLED smart TV with vivid colors", "TVs", 4.4, "Samsung", 80),
-                    new Product(null, "Nintendo Switch OLED", 349.0, "Portable console with OLED display", "Gaming", 4.8, "Nintendo", 250),
-                    new Product(null, "Kindle Paperwhite", 129.0, "Waterproof e-reader with high-resolution display", "E-Readers", 4.7, "Amazon", 600)
+                    new Product(null, "Iphone 15", 799.0, "Latest Apple iPhone 15 with advanced features", "Smartphones", 4.8, "Amazon", 500, List.of("/products/IPhone-15.jpg")),
+                    new Product(null, "Samsung Galaxy S24", 749.0, "Samsung flagship with high refresh display", "Smartphones", 4.6, "BestBuy", 400, List.of("/products/GalaxyS24.jpg")),
+                    new Product(null, "Google Pixel 8", 699.0, "Google phone with clean Android and great camera", "Smartphones", 4.5, "Google Store", 350, List.of("/products/Pixel8.jpeg")),
+                    new Product(null, "OnePlus 12", 649.0, "Performance-focused phone with fast charging", "Smartphones", 4.4, "OnePlus", 300, List.of("/products/Oneplus12.jpg")),
+                    new Product(null, "Sony WH-1000XM5", 349.0, "Top-tier noise cancelling headphones", "Audio", 4.7, "Sony", 200, List.of("/products/Sonyheadphone.jpg")),
+                    new Product(null, "Apple AirPods Pro 2", 249.0, "Wireless earbuds with active noise cancellation", "Audio", 4.6, "Apple Store", 450, List.of("/products/airpodspro2.webp")),
+                    new Product(null, "Dell XPS 13", 999.0, "Compact premium laptop for professionals", "Laptops", 4.5, "Dell", 120, List.of("/products/DellLaptop.jpg")),
+                    new Product(null, "Samsung 55\" QLED TV", 899.0, "4K QLED smart TV with vivid colors", "TVs", 4.4, "Samsung", 80, List.of("/products/SamsungTV.jpg")),
+                    new Product(null, "Nintendo Switch OLED", 349.0, "Portable console with OLED display", "Gaming", 4.8, "Nintendo", 250, List.of("/products/NSwitch.jpg")),
+                    new Product(null, "Kindle Paperwhite", 129.0, "Waterproof e-reader with high-resolution display", "E-Readers", 4.7, "Amazon", 600, List.of("/products/Kindle.jpg"))
             );
 
             productRepository.saveAll(products);

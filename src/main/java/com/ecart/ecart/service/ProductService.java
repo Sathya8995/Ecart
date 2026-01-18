@@ -37,7 +37,10 @@ public class ProductService {
 
     public List<Product> SearchProducts(String category, Double minPrice, Double maxPrice, String Keyword, Double minRating) {
         // Filtering logic to be implemented
-        Specification<Product> spec = Specification.where(ProductSpecification.hasCategory(category));
+        Specification<Product> spec = Specification.where(ProductSpecification.hasCategory(category))
+                .and(ProductSpecification.hasPriceBetween(minPrice, maxPrice))
+                .and(ProductSpecification.hasKeyword(Keyword))
+                .and(ProductSpecification.hasMinRating(minRating));
         return productRepository.findAll(spec);
     }
 }

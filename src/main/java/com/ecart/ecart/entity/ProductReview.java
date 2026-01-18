@@ -6,6 +6,11 @@ import jakarta.validation.constraints.Min;
 
 @Entity
 public class ProductReview {
+
+    public ProductReview() {
+        super();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -44,5 +49,17 @@ public class ProductReview {
         Id = id;
         this.rating = rating;
         this.comment = comment;
+    }
+
+    @ManyToOne()
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

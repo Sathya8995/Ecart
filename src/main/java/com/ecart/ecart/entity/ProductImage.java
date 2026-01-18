@@ -39,4 +39,14 @@ public class ProductImage {
         this.publicId = publicId;
         this.url = url;
     }
+
+    @ManyToOne()
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    public ProductImage(String url, Product product) {
+        this.url = "/uploads"+url;
+        this.publicId = url;
+        this.product = product;
+    }
 }
