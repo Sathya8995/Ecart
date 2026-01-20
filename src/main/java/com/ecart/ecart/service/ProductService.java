@@ -1,5 +1,8 @@
 package com.ecart.ecart.service;
 
+import com.ecart.ecart.dto.ProductDto;
+import com.ecart.ecart.dto.ProductReviewDto;
+import com.ecart.ecart.dto.ProductImageDto;
 import com.ecart.ecart.entity.Product;
 import com.ecart.ecart.repository.ProductRepository;
 import com.ecart.ecart.spec.ProductSpecification;
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -23,12 +27,44 @@ public class ProductService {
     public Map<String, Object> getAllProducts(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Product> products = productRepository.findAll(pageable);
+        List<ProductDto> productDtos = products.stream().map( this::convertToDto ).collect(Collectors.toList());
         Map<String, Object> response = new HashMap<>();
-        response.put("products", products.getContent());
+        response.put("products", productDtos);
         response.put("currentPage", products.getNumber());
         response.put("totalItems", products.getTotalElements());
         response.put("totalPages", products.getTotalPages());
         return response;
+    }
+
+    public ProductDto convertToDto(Product product) {
+        ProductDto dto = new ProductDto();
+        dto.setId(product.getId());
+        dto.setName(product.getName());
+        dto.setPrice(product.getPrice());
+        dto.setDescription(product.getDescription());
+        dto.setRatings(product.getRatings());
+        dto.setCategory(product.getCategory());
+        dto.setSeller(product.getSeller());
+        dto.setStock(product.getStock());
+        dto.setNumOfReviews(product.getNumOfReviews());
+
+        List<ProductReviewDto>  reviewDtos = product.getReviews().stream().map(review -> {
+            ProductReviewDto reviewDto = new ProductReviewDto();
+            reviewDto.setProductId(review.getId());
+            reviewDto.setComment(review.getComment());
+            reviewDto.setRating(review.getRating());
+            return reviewDto;
+        }).collect(Collectors.toList());
+
+        dto.setReviews(reviewDtos);
+
+        List<ProductImageDto>  imageDtos = product.getImages().stream().map(image -> {
+            ProductImageDto imageDto = new ProductImageDto(image.getPublicId());
+            return imageDto;
+        }).collect(Collectors.toList());
+
+        dto.setImages(imageDtos);
+        return dto;
     }
 
     public Product getProductById(Long id) {

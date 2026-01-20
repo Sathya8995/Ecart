@@ -1,141 +1,106 @@
-package com.ecart.ecart.entity;
+package com.ecart.ecart.dto;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Entity
-@Table(name = "Products")
-public class Product  {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@JsonPropertyOrder({ "id", "name", "price", "description", "category", "seller", "stock", "ratings", "numOfReviews", "images", "reviews" })
+public class ProductDto {
     private Long id;
 
-    @Column(nullable = false)
-    @NotBlank(message = "Name field is required")
     private String name;
 
-    @Column(nullable = false)
-    @NotNull(message = "Price field is required")
-    @PositiveOrZero(message = "Only Non negative values")
+    public void Product() {
+
+    }
     private Double price;
 
-    @NotBlank(message = "Description field is required")
+
     private String description;
 
     private String category;
 
-    private Double ratings = 0.0;
-
-    @NotBlank(message = "Seller field is required")
-    private String seller;
-
-    @NotNull(message = "Price field is required")
-    private Integer stock;
-
-    private Integer numOfReviews = 0;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "product_id")
-    private List<ProductImage> images;
-
-    public List<ProductImage> getImages() {
-        return images;
-    }
-    public void setImages(List<ProductImage> images) {
-        this.images = images;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "product_id")
-    private List<ProductReview> reviews;
-
-    public List<ProductReview> getReviews() {
-        return reviews;
-    }
-    public void setReviews(List<ProductReview> reviews) {
-        this.reviews = reviews;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 
     public String getCategory() {
         return category;
     }
-
     public void setCategory(String category) {
         this.category = category;
     }
+    private Double ratings = 0.0;
 
+    private String seller;
+
+    private Integer stock;
+
+    private Integer numOfReviews = 0;
+
+    private List<ProductImageDto> images;
+
+    public List<ProductImageDto> getImages() {
+        return images;
+    }
+    public void setImages(List<ProductImageDto> images) {
+        this.images = images;
+    }
+    private List<ProductReviewDto> reviews;
+
+
+    public List<ProductReviewDto> getReviews() {
+        return reviews;
+    }
+    public void setReviews(List<ProductReviewDto> reviews) {
+        this.reviews = reviews;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Double getPrice() {
+        return price;
+    }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+    public String getDescription() {
+        return description;
+    }
     public void setDescription(String description) {
         this.description = description;
     }
-
     public Double getRatings() {
         return ratings;
     }
-
     public void setRatings(Double ratings) {
         this.ratings = ratings;
     }
-
     public String getSeller() {
         return seller;
     }
-
     public void setSeller(String seller) {
         this.seller = seller;
     }
-
     public Integer getStock() {
         return stock;
     }
-
     public void setStock(Integer stock) {
         this.stock = stock;
     }
-
     public Integer getNumOfReviews() {
         return numOfReviews;
     }
-
     public void setNumOfReviews(Integer numOfReviews) {
         this.numOfReviews = numOfReviews;
     }
-
-    public Product() {
-        super();
-    }
-
-    public Product(Long id, String name, Double price, String description, String category, Double ratings, String seller, Integer stock, List<String> images) {
+    public void Product(Long id, String name, Double price, String description, String category, Double ratings, String seller, Integer stock) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -144,7 +109,6 @@ public class Product  {
         this.ratings = ratings;
         this.seller = seller;
         this.stock = stock;
-        this.images = images.stream().map(url -> new ProductImage(url, this))
-                .collect(Collectors.toList());
+
     }
 }

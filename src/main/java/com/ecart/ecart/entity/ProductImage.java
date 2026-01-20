@@ -35,6 +35,7 @@ public class ProductImage {
     }
 
     public ProductImage(Long id, String publicId, String url) {
+        super();
         Id = id;
         this.publicId = publicId;
         this.url = url;
@@ -48,5 +49,9 @@ public class ProductImage {
         this.url = "/uploads"+url;
         this.publicId = url;
         this.product = product;
+    }
+
+    public ProductImage() {
+        super();
     }
 }

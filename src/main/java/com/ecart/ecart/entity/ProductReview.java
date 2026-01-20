@@ -17,7 +17,7 @@ public class ProductReview {
 
     @Min(value = 1)
     @Max(value = 5)
-    private Integer rating;
+    private Double rating;
 
     private String comment;
 
@@ -29,11 +29,11 @@ public class ProductReview {
         Id = id;
     }
 
-    public Integer getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
@@ -45,7 +45,7 @@ public class ProductReview {
         this.comment = comment;
     }
 
-    public ProductReview(Long id, Integer rating, String comment) {
+    public ProductReview(Long id, Double rating, String comment) {
         Id = id;
         this.rating = rating;
         this.comment = comment;
