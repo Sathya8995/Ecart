@@ -1,9 +1,11 @@
 package com.ecart.ecart.repository;
 
 import com.ecart.ecart.entity.Order;
-import com.ecart.ecart.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface OrderRepository extends JpaRepository<Order, Long>, JpaSpecificationExecutor<Product> {
+import java.util.Optional;
+
+public interface OrderRepository extends JpaRepository<Order, Long> {
+    Optional<Order> findByReferenceId(String referenceId);
 }

@@ -7,9 +7,12 @@ import com.ecart.ecart.entity.OrderItem;
 import com.ecart.ecart.entity.Product;
 import com.ecart.ecart.repository.OrderRepository;
 import com.ecart.ecart.repository.ProductRepository;
+import com.ecart.ecart.spec.ProductSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -51,4 +54,8 @@ public class OrderService {
 
     }
 
+    public Order getOrder(String referenceId) {
+        return orderRepo.findByReferenceId(referenceId).orElseThrow(() -> new RuntimeException("Order not found in id: " + referenceId));
+
+    }
 }

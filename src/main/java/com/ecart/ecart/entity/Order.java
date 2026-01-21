@@ -19,7 +19,7 @@ public class Order {
     private Double taxAmount;
     private Double totalAmount;
     private String status;
-    private String ReferenceId;
+    private String referenceId;
 
     public Long getId() {
         return id;
@@ -70,10 +70,10 @@ public class Order {
     }
 
     public String getReferenceId() {
-        return ReferenceId;
+        return referenceId;
     }
 
-    public void setReferenceId(String ReferenceId) {
-        this.ReferenceId = ReferenceId;
+    public void setReferenceId(String referenceId) {
+        this.referenceId = referenceId;
     }
 }
