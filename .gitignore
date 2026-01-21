@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore all .log files
+*.log
+
+# If log files are in a specific directory, like logs/, ignore them
+logs/
+logs/*.log
