@@ -1,0 +1,16 @@
+13:13:56.511 [ApplicationImpl pooled thread 141] INFO  c.b.l.BrowserStackRunExtension - application
+13:13:56.513 [ApplicationImpl pooled thread 141] INFO  com.browserstack.utils.Helpers - null
+18:50:21.433 [ApplicationImpl pooled thread 259] INFO  c.b.l.BrowserStackRunExtension - application
+18:50:21.433 [ApplicationImpl pooled thread 259] INFO  com.browserstack.utils.Helpers - null
+19:16:53.664 [ApplicationImpl pooled thread 277] INFO  c.b.l.BrowserStackRunExtension - application
+19:16:53.664 [ApplicationImpl pooled thread 277] INFO  com.browserstack.utils.Helpers - null
+19:19:45.575 [ApplicationImpl pooled thread 270] INFO  c.b.l.BrowserStackRunExtension - application
+19:19:45.575 [ApplicationImpl pooled thread 270] INFO  com.browserstack.utils.Helpers - null
+19:22:55.995 [ApplicationImpl pooled thread 286] INFO  c.b.l.BrowserStackRunExtension - application
+19:22:55.995 [ApplicationImpl pooled thread 286] INFO  com.browserstack.utils.Helpers - null
+20:04:49.502 [ApplicationImpl pooled thread 320] INFO  c.b.l.BrowserStackRunExtension - application
+20:04:49.502 [ApplicationImpl pooled thread 320] INFO  com.browserstack.utils.Helpers - null
+20:07:46.829 [ApplicationImpl pooled thread 323] INFO  c.b.l.BrowserStackRunExtension - application
+20:07:46.829 [ApplicationImpl pooled thread 323] INFO  com.browserstack.utils.Helpers - null
+00:41:35.347 [ApplicationImpl pooled thread 402] INFO  c.b.l.BrowserStackRunExtension - application
+00:41:35.347 [ApplicationImpl pooled thread 402] INFO  com.browserstack.utils.Helpers - null
