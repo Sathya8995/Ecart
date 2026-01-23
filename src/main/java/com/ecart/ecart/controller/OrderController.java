@@ -1,6 +1,7 @@
 package com.ecart.ecart.controller;
 
 import com.ecart.ecart.dto.CreateOrderRequest;
+import com.ecart.ecart.dto.OrderCreated;
 import com.ecart.ecart.entity.Order;
 import com.ecart.ecart.entity.Product;
 import com.ecart.ecart.service.OrderService;
@@ -18,7 +19,7 @@ public class OrderController {
         @PostMapping
         public ResponseEntity<?> createOrder(@RequestBody CreateOrderRequest orderRequest) {
             // Implementation for creating an order
-            Order order = orderService.createOrder(orderRequest);
+            OrderCreated order = orderService.createOrder(orderRequest);
             return ResponseEntity.ok().body(order);
         }
 
