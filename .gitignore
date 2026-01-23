@@ -38,3 +38,6 @@ build/
 # If log files are in a specific directory, like logs/, ignore them
 logs/
 logs/*.log
+
+# ignore local env file with secrets
+.env

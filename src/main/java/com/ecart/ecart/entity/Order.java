@@ -13,7 +13,7 @@ public class Order {
     private Long id;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "orders_id")
     private List<OrderItem> orderItems = new ArrayList<>();
     private Double totalItemsAmount;
     private Double taxAmount;
